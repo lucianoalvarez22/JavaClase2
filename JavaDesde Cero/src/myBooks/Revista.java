@@ -23,24 +23,55 @@ public class Revista extends Publicacion {
 	@Override
 	public void leePagina(boolean silenciosamente) {
 		if (!this.isLeido()) {
-
-			if (getPagActual() < getNumPags()) {
-				setPagActual(getPagActual() + 1);
-				if (getPagActual() == getNumPags()) {
-					System.out.println(
-							"Última página (" + getNumPags() + ") leída de la revista titulada " + getTitulo());
-					setLeido(true);
+			if (silenciosamente) {
+				if (getPagActual() < 304) {
+					setPagActual(getPagActual() + 1);
 				} else {
-
-					System.out.println("Página " + getPagActual() + " leída de la revista titulada " + getTitulo());
-				}
+					System.out.println("Estas en la pagina 304");
+				} 
 			} else {
-				System.out.println("Revista titulada " + getTitulo() + " ya ha sido leida");
-				setLeido(true);
+				if (getPagActual() < 309) {
+					setPagActual(getPagActual() + 1);
+					if (getPagActual() == getNumPags()) {
+						System.out.println("Última página (" + getNumPags() + ") leída del libro titulado "
+								+ getTitulo());
+						setLeido(true);
+					} else {
+
+						System.out.println("Página " + getPagActual() + " leída del libro titulado " + getTitulo());
+					}
+				} else if (getPagActual() == 309) {
+					System.out.println("Estás en la pagina: 309");
+					setPagActual(getPagActual() + 1);
+					if (getPagActual() == getNumPags()) {
+						System.out.println("El libro " + getTitulo() + " ha sido leído");
+						setLeido(true);
+					}
+				} else if (getPagActual() == 310) {
+					System.out.println("Estas en la pagina 310");
+					setPagActual(getPagActual() + 1);
+					if (getPagActual() == getNumPags()) {
+						System.out.println("El libro " + getTitulo() + " ha sido leído");
+						setLeido(true);
+					}
+				} else {
+					if (getPagActual() == getNumPags()) {
+						System.out.println("Última página (" + getNumPags() + ") leída del libro titulado "
+								+ getTitulo());
+						setLeido(true);
+					} else {
+
+						System.out.println("Página " + getPagActual() + " leída del libro titulado " + getTitulo());
+					}
+					
+					setPagActual(getPagActual() + 1);
+				}
 			}
-		} else {
-			System.out.println("La revista " + getTitulo() + " ya ha sido leida");
-		}
+
+		} 
+//		else {
+//			System.out.println("El libro " + getTitulo() + " del autor " + getAutor() + " ya ha sido leido");
+//		}
 
 	}
 

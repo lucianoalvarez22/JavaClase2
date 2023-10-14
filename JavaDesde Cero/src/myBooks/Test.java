@@ -7,13 +7,6 @@ public class Test {
 
 	public static void main(String[] args) {
 
-//		for(int i= l1.getPagInicial(); i<l1.getNumPags(); i++) {
-//			l1.leePagina(false);
-//		}
-//		
-//		l1.leePagina(false);
-//		System.out.println("------------");
-
 		// nstanciar los siguientes 10 libros
 		Libro lib0 = new Libro("Cien años de soledad", "Gabriel García Márquez", 735, 3, false, 20.99);
 		Libro lib1 = new Libro("El señor de los anillos", "J. R. R. Tolkien", 429, 5, false, 22.99);
@@ -36,8 +29,6 @@ public class Test {
 		// Mételos todos en un array llamado publicaciones
 		Publicacion[] publicaciones = { lib0, lib1, lib2, lib3, lib4, lib5, lib6, lib7, lib8, lib9, rev0, rev1, rev2,
 				rev3, rev4 };
-		Libro[] libroArray = new Libro[publicaciones.length];
-		Revista[] revistaArray = new Revista[publicaciones.length];
 
 		// Todas las publicaciones del array publicaciones con título y ID
 		// Solo libros del array publicaciones con ID y título (usar instanceof para
@@ -45,7 +36,10 @@ public class Test {
 		// Solo revistas del array publicaciones con ID y título (usar instanceof para
 		// discriminar).
 
-		System.out.println("Publicaciones: ");
+		Libro[] libroArray = new Libro[publicaciones.length];
+		Revista[] revistaArray = new Revista[publicaciones.length];
+
+		System.out.println("\nTodas las Publicaciones-Array\n======================\n");
 		for (int i = 0; i < publicaciones.length; i++) {
 			System.out.println("Titulo: " + publicaciones[i].getTitulo() + " ID: " + publicaciones[i].getID());
 			if (publicaciones[i] instanceof Libro)
@@ -53,56 +47,62 @@ public class Test {
 			else
 				revistaArray[i] = (Revista) publicaciones[i];
 		}
-		System.out.println();
-		System.out.println("Libros: ");
+
+		System.out.println("\nLibros-Array\n===========\n");
 
 		for (Libro libroElem : libroArray) {
 			if (libroElem != null)
 				System.out.println("Titulo: " + libroElem.getTitulo() + "ID: " + libroElem.getID());
 		}
-		System.out.println();
-		System.out.println("Revista: ");
+		System.out.println("\nRevistas-Array\n===========\n");
 
 		for (Revista revistaElem : revistaArray) {
 			if (revistaElem != null)
 				System.out.println("Titulo: " + revistaElem.getTitulo() + " ID: " + revistaElem.getID());
 		}
 
-		System.out.println();
-
-		Libro[] libroArrayPrecio = new Libro[publicaciones.length];
-		Revista[] revistaArrayPrecio = new Revista[publicaciones.length];
 		// Todas las publicaciones del array publicaciones con ID, título y precio pero
 		// filtrando aquellas que tienen un precio mayor de 20 euros.
 
 		// Solo libros del array publicaciones con ID y título y precio pero filtrando
 		// aquellas que tienen un precio mayor de 20 euros. (usar instanceof para
 		// discriminar).
-
 		// Solo revistas del array publicaciones con ID y título y precio pero filtrando
 		// aquellas que tienen un precio mayor de 3 euros (usar instanceof para
 		// discriminar).
+		Libro[] libroArrayPrecio = new Libro[publicaciones.length];
+		Revista[] revistaArrayPrecio = new Revista[publicaciones.length];
+
+		System.out.println(
+				"\nTodas las publicaciones-Array con precio mayor a 20€\n===============================================\n");
 		for (int i = 0; i < publicaciones.length; i++) {
 			if (publicaciones[i].getPrecio() > 20) {
 				System.out.println("Titulo: " + publicaciones[i].getTitulo() + " ID: " + publicaciones[i].getID()
 						+ " Precio: " + publicaciones[i].getPrecio());
-			} else if (publicaciones[i] instanceof Libro && publicaciones[i].getPrecio() > 20) {
+			}
+			if (publicaciones[i] instanceof Libro && publicaciones[i].getPrecio() > 20) {
 				libroArrayPrecio[i] = (Libro) publicaciones[i];
-				System.out.println("Titulo: " + publicaciones[i].getTitulo() + " ID: " + publicaciones[i].getID()
-						+ " Precio: " + publicaciones[i].getPrecio());
 			} else if (publicaciones[i] instanceof Revista && publicaciones[i].getPrecio() > 3) {
 				revistaArrayPrecio[i] = (Revista) publicaciones[i];
-				System.out.println("Titulo: " + publicaciones[i].getTitulo() + " ID: " + publicaciones[i].getID()
-						+ " Precio: " + publicaciones[i].getPrecio());
 			}
 		}
-		System.out.println();
-//		 prueba
-//		for (Libro elem : libroArray) {
-//			System.out.println(elem);
-//		}
+
+		System.out.println("\nLibros-Array con precio mayor a 20€\n============================\n");
+		for (Libro libroElem : libroArrayPrecio) {
+			if (libroElem != null)
+				System.out.println("Titulo: " + libroElem.getTitulo() + " ID: " + libroElem.getID() + " Precio: "
+						+ libroElem.getPrecio());
+		}
+
+		System.out.println("\nRevista-Array con precio mayor a 20€\n=============================\n");
+		for (Revista revistaElem : revistaArrayPrecio) {
+			if (revistaElem != null)
+				System.out.println("Titulo: " + revistaElem.getTitulo() + " ID: " + revistaElem.getID() + " Precio: "
+						+ revistaElem.getPrecio());
+		}
 
 		System.out.println();
+		System.out.println("----------------- LO MISMO CON ARRAYLIST -----------------------------------------------");
 		// Realizar todo el proceso anterior utilizando ArrayList
 		ArrayList<Publicacion> listaPublicaciones = new ArrayList<>();
 		ArrayList<Publicacion> libroArrayList = new ArrayList<>();
@@ -128,38 +128,69 @@ public class Test {
 		// discriminar).
 		// Solo revistas del array publicaciones con ID y título (usar instanceof para
 		// discriminar).
+
+		System.out.println("\nTodas las Publicaciones ArrayList\n=================================\n");
 		for (Publicacion publiActual : listaPublicaciones) {
 			System.out.println("Titulo: " + publiActual.getTitulo() + " ID: " + publiActual.getID());
 			if (publiActual instanceof Libro) {
 				libroArrayList.add(publiActual);
-				System.out.println("Titulo: " + publiActual.getTitulo() + " ID: " + publiActual.getID());
 			} else if (publiActual instanceof Revista) {
 				revistaArrayList.add(publiActual);
-				System.out.println("Titulo: " + publiActual.getTitulo() + "ID: " + publiActual.getID());
-
 			}
 
 		}
-		System.out.println();
+		System.out.println("\nRevista ArrayList\n=====================\n");
+		for (Publicacion revistaElem : revistaArrayList) {
+			System.out.println("Titulo: " + revistaElem.getTitulo() + " ID: " + revistaElem.getID());
+		}
 
+		System.out.println("\nLibros ArrayList\n==================\n");
+		for (Publicacion libroElem : libroArrayList) {
+			System.out.println("Titulo: " + libroElem.getTitulo() + " ID: " + libroElem.getID());
+		}
+
+		// Todas las publicaciones del array publicaciones con ID, título y precio pero
+		// filtrando aquellas que tienen un precio mayor de 20 euros.
+
+		// Solo libros del array publicaciones con ID y título y precio pero filtrando
+		// aquellas que tienen un precio mayor de 20 euros. (usar instanceof para
+		// discriminar).
+		// Solo revistas del array publicaciones con ID y título y precio pero filtrando
+		// aquellas que tienen un precio mayor de 3 euros (usar instanceof para
+		// discriminar).
+		ArrayList<Publicacion> libroArrayListPrecio = new ArrayList<>();
+		ArrayList<Publicacion> revistaArrayListPrecio = new ArrayList<>();
+
+		System.out.println(
+				"\nTodas las Publicaciones-ArrayList mayor de 20€\n==================================================\n");
 		for (Publicacion publiActual : listaPublicaciones) {
 			if (publiActual.getPrecio() > 20) {
 				System.out.println("Titulo: " + publiActual.getTitulo() + " ID: " + publiActual.getID() + " Precio: "
 						+ publiActual.getPrecio());
-			} else if (publiActual instanceof Libro && publiActual.getPrecio() > 20) {
-				System.out.println("Titulo: " + publiActual.getTitulo() + " ID: " + publiActual.getID() + " Precio: "
-						+ publiActual.getPrecio());
+			}
+			if (publiActual instanceof Libro && publiActual.getPrecio() > 20) {
+				libroArrayListPrecio.add(publiActual);
 			} else if (publiActual instanceof Revista && publiActual.getPrecio() > 3) {
-				System.out.println("Titulo: " + publiActual.getTitulo() + " ID: " + publiActual.getID() + " Precio: "
-						+ publiActual.getPrecio());
+				revistaArrayListPrecio.add(publiActual);
 			}
 		}
 
+		System.out.println("\nLibros-ArrayList con precio mayor a 20€\n===================================\n");
+		for (Publicacion libroElem : libroArrayListPrecio) {
+			System.out.println("Titulo: " + libroElem.getTitulo() + " ID: " + libroElem.getID() + " Precio: "
+					+ libroElem.getPrecio());
+		}
+
+		System.out.println("\nRevistas-ArrayList con precio mayor a 3€\n============================\n");
+		for (Publicacion revistaElem : revistaArrayListPrecio) {
+			System.out.println("Titulo: " + revistaElem.getTitulo() + " ID: " + revistaElem.getID() + " Precio: "
+					+ revistaElem.getPrecio());
+		}
+
 		System.out.println();
-		System.out.println();
+		System.out.println("-----------------Verificación de lectura y métodos---------------------------------");
 
 		// Verificación de lectura y métodos de presentación correctos
-
 		// Utiliza el libro Ulises, pero dentro del array. No utilices lib7
 		for (Publicacion libroActual : libroArrayList) {
 			if (libroActual instanceof Libro && libroActual.getTitulo().equalsIgnoreCase("Ulises")) {
@@ -170,8 +201,8 @@ public class Test {
 			}
 		}
 
-		System.out.println("--------------------------------");
-
+		System.out.println(
+				"\nLee 300 paginas de forma silenciosa y verifica PAGINA 304\n=====================================================\n");
 		// Lee 300 paginas de forma silenciosa con el método estático y verifica que
 		// estás en la página 304
 		for (Publicacion publiActual : listaPublicaciones) {
@@ -181,11 +212,11 @@ public class Test {
 				}
 			}
 		}
-		
+
+		System.out.println(
+				"\nLee 5 paginas de forma NO silenciosa y verifica PAGINA 309\n=========================================================\n");
 		// 4. Lee 5 palabras de forma NO silenciosa con el método estático y verifica
 		// que estás en la página 309.
-
-		System.out.println("------------------------------------------");
 		for (Publicacion publiActual : listaPublicaciones) {
 			if (publiActual instanceof Libro && publiActual.getTitulo().equalsIgnoreCase("Ulises")) {
 				for (int i = 0; i < 5; i++) {
@@ -194,14 +225,15 @@ public class Test {
 			}
 		}
 
-		System.out.println("-----------------------------------------------------");
+		System.out.println(
+				"\nLee 10 paginas de forma NO silenciosa y verifica PAGINA 310\n===================================================\n");
 		// 5. Lee 10 palabras de forma NO silenciosa con el método NO estático y
 		// verifica que estás en la página 310.
 		for (Publicacion publiActual : listaPublicaciones) {
 			if (publiActual instanceof Libro && publiActual.getTitulo().equalsIgnoreCase("Ulises")) {
-				for (int i = 0; i <9; i++) {
+				for (int i = 0; i < 9; i++) {
 					publiActual.leePagina(false);
-					if(publiActual.getPagActual()==311) {
+					if (publiActual.getPagActual() == 311) {
 						break;
 					}
 				}
@@ -209,8 +241,11 @@ public class Test {
 		}
 		// Lee 1000 palabras con el método NO estático y verifica que figura como leído
 		// y está en la página 400.
-		System.out.println("-------------------------------------------------------");
-		
+
+		System.out.println(
+				"\nLee 1000 paginas con el método NO estático. Verifica como leido y que está en la página 400\n================"
+				+ "==============================================================================================\n");
+
 		for (Publicacion publiActual : listaPublicaciones) {
 			if (publiActual instanceof Libro && publiActual.getTitulo().equalsIgnoreCase("Ulises")) {
 				for (int i = 0; i <= 1000; i++) {
