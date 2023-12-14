@@ -14,7 +14,7 @@ public abstract class Publicacion implements CanRead {
 	private boolean leido;
 
 	// Propiedades estáticas
-	private static long nextID;
+	private static long nextID = 0;
 
 	// Constructor
 	public Publicacion(String titulo, int numPags, int pagInicial, boolean formatoDigital, double precio) {
@@ -23,8 +23,8 @@ public abstract class Publicacion implements CanRead {
 		this.pagInicial = pagInicial;
 		this.formatoDigital = formatoDigital;
 		this.precio = precio;
+		ID =  (int) nextID;
 		++nextID;
-		ID = (int) nextID - 1;
 		this.pagActual = pagInicial;
 	}
 
@@ -82,7 +82,7 @@ public abstract class Publicacion implements CanRead {
 
 	// METODO SHOW STATIC
 	public static void showStatic(Publicacion p) {
-		System.out.println(p.show());
+		System.out.println(p.show()); 
 	}
 
 	// METODO LEEPAGINA STATIC

@@ -18,7 +18,7 @@ public class Libro extends Publicacion {
 		return autor;
 	}
 
-	@Override
+	@Override 
 	public String show() {
 		return this.mensajeCabecera + "Titulo: " + getTitulo() + "\n" + "Autor: " + this.autor + "\n" + "Id: " + getID()
 				+ "\n" + "Páginas: " + getNumPags() + "\n" + "Página inicial: " + getPagInicial() + "\n"

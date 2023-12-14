@@ -30,7 +30,7 @@ public class CalculoEntero {
 		UsaIntDevuelveInt doble = s -> s * 2;
 		UsaIntDevuelveInt polinomio = s -> 5*s^3+7*s^2+9;
 		//UsaCuatroIntYDevuelveInt polinomioVariable = s -> s*s^3+s*s^2+s;
-		UsaCuatroIntYDevuelveInt polinomioVariable = (int a1, int b1, int c1, int x1) -> a1*x1^3+b1*x1^2+c1;
+		UsaCuatroIntYDevuelveInt polinomioVariable = ( a1, b1, c1, x1) -> a1*x1^3+b1*x1^2+c1;
 		
 		System.out.println(cuadrado.m(x));
 		System.out.println(cubo.m(x));
