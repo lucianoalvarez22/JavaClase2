@@ -71,10 +71,10 @@ public class GeneraFicherosSimultaneosExamenPOO {
 							 "  <tr>\n" +
 		                                "<td>" + t.split(" ")[0] + "</td>\n" +
 		 
-		                                "    <td>" + t.split(" ")[0] + "</td>\n" +
 		                                "    <td>" + t.split(" ")[1] + "</td>\n" +
 		                                "    <td>" + t.split(" ")[2] + "</td>\n" +
-		                                "    <td>" + t.split(" ")[3] + ", " + t.split(" ")[4] + "</td>\n" +
+		                                "    <td>" + t.split(" ")[3] + "</td>\n" +
+		                                "    <td>" + t.split(" ")[4] + "</td>\n" +
 		                                "  </tr>\n");
 				} catch (IOException e) {
 					e.printStackTrace();
